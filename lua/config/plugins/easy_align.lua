@@ -1,4 +1,4 @@
-return require("lazier") {
+return {
     "junegunn/vim-easy-align",
     command = ":EasyAlign",
 
@@ -6,4 +6,3 @@ return require("lazier") {
         vim.keymap.set({ "n", "v" }, "<leader>ea", "<Plug>(EasyAlign)")
     end
 }
-

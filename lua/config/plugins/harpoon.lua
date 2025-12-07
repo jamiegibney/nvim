@@ -1,11 +1,9 @@
-return require("lazier") {
+return {
     "theprimeagen/harpoon",
     branch = "harpoon2",
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
-
-    -- event = "VeryLazy",
 
     config = function()
         local hp = require("harpoon")

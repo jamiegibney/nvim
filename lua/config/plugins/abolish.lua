@@ -1,5 +1,4 @@
-return require("lazier") {
+return {
     "tpope/vim-abolish",
     event = "BufWrite",
 }
-

@@ -1,4 +1,4 @@
-return require("lazier") {
+return {
     "kylechui/nvim-surround",
 
     version = "^3.0.0",
@@ -8,4 +8,3 @@ return require("lazier") {
         require("nvim-surround").setup({})
     end
 }
-

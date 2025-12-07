@@ -1,4 +1,4 @@
-return require("lazier") {
+return {
     "stevearc/oil.nvim",
 
     dependencies = {
@@ -42,11 +42,6 @@ return require("lazier") {
             progress = {
                 border = "rounded",
             },
-            -- git = {
-            --     add = function(_) return true end,
-            --     mv  = function(_) return true end,
-            --     rm  = function(_) return true end,
-            -- },
             float = {
                 padding = 1,
                 border = "single",

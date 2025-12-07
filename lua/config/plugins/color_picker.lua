@@ -1,8 +1,5 @@
-return require("lazier") {
+return {
     "ziontee113/color-picker.nvim",
-    -- keys = {
-    --     "<leader>pc"
-    -- },
 
     config = function()
         require("color-picker").setup()

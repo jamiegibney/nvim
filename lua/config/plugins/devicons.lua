@@ -1,3 +1,3 @@
-return require("lazier") {
+return {
     "nvim-tree/nvim-web-devicons",
 }

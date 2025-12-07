@@ -1,4 +1,4 @@
-return require("lazier") {
+return {
     "nvim-telescope/telescope.nvim",
 
     dependencies = {
@@ -102,7 +102,6 @@ return require("lazier") {
 
                 winblend = 0,
                 color_devicons = true,
-                -- borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
                 file_ignore_patterns = { "node_modules" },
                 set_env = { ["COLORTERM"] = "truecolor" },
             },

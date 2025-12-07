@@ -1,4 +1,4 @@
-return require("lazier") {
+return {
     "lewis6991/gitsigns.nvim",
     event = "BufWrite",
 

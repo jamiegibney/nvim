@@ -1,4 +1,4 @@
-return require("lazier") {
+return {
     "akinsho/toggleterm.nvim",
     version = "*",
     keys = { "<C-Space>", },
@@ -16,7 +16,7 @@ return require("lazier") {
             insert_mappings = true,
             terminal_mappings = true,
 
-            -- close_on_exit = false,
+            close_on_exit = false,
             auto_scroll = false,
 
             open_mapping = "<C-Space>",

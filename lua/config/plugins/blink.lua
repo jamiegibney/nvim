@@ -1,4 +1,4 @@
-return require("lazier") {
+return {
     "saghen/blink.cmp",
     event = "InsertEnter",
 
