@@ -1,5 +1,6 @@
 {
   "blink.cmp": { "branch": "main", "commit": "57d900e6982f63c7cde689aa06d8af76c8da083e" },
+  "color-picker.nvim": { "branch": "master", "commit": "06cb5f853535dea529a523e9a0e8884cdf9eba4d" },
   "gitsigns.nvim": { "branch": "main", "commit": "5813e4878748805f1518cee7abb50fd7205a3a48" },
   "harpoon": { "branch": "harpoon2", "commit": "87b1a3506211538f460786c23f98ec63ad9af4e5" },
   "indent-blankline.nvim": { "branch": "master", "commit": "005b56001b2cb30bfa61b7986bc50657816ba4ba" },
