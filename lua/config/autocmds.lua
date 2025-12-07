@@ -24,8 +24,6 @@ autocmd({ "BufWinEnter" }, function() vim.cmd("exe 'normal zz'") end)
 
 -- set comment highlights
 autocmd({ "TextChanged", "BufReadPost", "BufWritePost" }, function()
-    vim.api.nvim_set_hl(0, "@ibl.indent.char.1", { fg = "#2a2a2a" })
-    vim.api.nvim_set_hl(0, "@ibl.scope.char.1", { fg = "#444444" })
     vim.fn.matchadd("TODOComment", [[\<TODO\>]])
     vim.fn.matchadd("NOTEComment", [[\<NOTE\>]])
     vim.fn.matchadd("MARKComment", [[\<MARK\>]])
