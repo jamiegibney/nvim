@@ -1,3 +1,5 @@
+-- In-editor colour picker.
+
 return {
     "ziontee113/color-picker.nvim",
 

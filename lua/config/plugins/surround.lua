@@ -1,3 +1,5 @@
+-- Flexible utilities for surrounding text with delimiters.
+
 return {
     "kylechui/nvim-surround",
 

@@ -1,3 +1,5 @@
+-- Powerful text alignment.
+
 return {
     "junegunn/vim-easy-align",
     command = ":EasyAlign",

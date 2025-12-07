@@ -1,3 +1,5 @@
+-- Auto-completion for LSP and other sources.
+
 return {
     "saghen/blink.cmp",
     event = "InsertEnter",

@@ -1,8 +1,10 @@
+-- Debug adapter for launching/attaching to processes for debugging.
+
 return {
     "mfussenegger/nvim-dap",
     dependencies = {
         "rcarriga/nvim-dap-ui",
-        { 
+        {
             "theHamsta/nvim-dap-virtual-text",
             dependencies = {
                 "nvim-neotest/nvim-nio",
@@ -69,7 +71,7 @@ return {
                 name = "Attach",
                 type = "lldb",
                 request = "attach",
-                pid = function() 
+                pid = function()
                     return require("dap.utils").pick_process()
                 end,
             },

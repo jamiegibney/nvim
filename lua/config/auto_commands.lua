@@ -1,3 +1,5 @@
+-- Various auto commands for specific behaviours.
+
 local function autocmd(event, cb, pattern)
     local pat = pattern or "*"
     vim.api.nvim_create_autocmd(event, {

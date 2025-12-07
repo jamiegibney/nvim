@@ -1,3 +1,5 @@
+-- Various fuzzy finders.
+
 return {
     "nvim-telescope/telescope.nvim",
 
@@ -7,7 +9,7 @@ return {
         },
         {
             "nvim-telescope/telescope-fzf-native.nvim",
-            build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release --target install",
+            build = "make",
         },
         {
             "nvim-telescope/telescope-ui-select.nvim",
@@ -59,7 +61,8 @@ return {
 
                     local truncate_len = 2
                     local status = get_status(vim.api.nvim_get_current_buf())
-                    local len = vim.api.nvim_win_get_width(status.results_win) - status.picker.selection_caret:len() - 2
+                    local len = vim.api.nvim_win_get_width(status.results_win)
+                        - status.picker.selection_caret:len() - 2
                     local path_len = len - truncate_len
 
                     local truncated = truncate(path, path_len, nil, -1)
@@ -81,21 +84,21 @@ return {
                 layout_strategy = "horizontal",
                 layout_config = {
                     horizontal = {
-                        width  = 0.80,
-                        height = 0.90,
-                        preview_width = 0.45,
+                        width           = 0.80,
+                        height          = 0.90,
+                        preview_width   = 0.45,
                         prompt_position = "bottom",
                     },
                     vertical = {
-                        width  = 0.80,
-                        height = 0.90,
-                        preview_height = 0.60,
-                        mirror = false,
+                        width           = 0.80,
+                        height          = 0.90,
+                        preview_height  = 0.60,
+                        mirror          = false,
                         prompt_position = "bottom",
                     },
                     cursor = {
-                        width  = 0.30,
-                        height = 0.30,
+                        width         = 0.30,
+                        height        = 0.30,
                         preview_width = 0.60,
                     },
                 },

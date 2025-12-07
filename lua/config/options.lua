@@ -1,3 +1,5 @@
+-- Vim options.
+
 local opt = vim.opt
 
 vim.g.loaded_node_provider    = 0
@@ -11,9 +13,6 @@ opt.guicursor = "n-v:block-blinkwait400-blinkon200-blinkoff200,i-ci-ve:ver80,r-c
 opt.history = 500
 opt.ttimeoutlen = 1
 opt.updatetime = 50
-
--- opt.splitright = true
--- opt.splitbelow = true
 
 opt.laststatus = 2
 

@@ -1,3 +1,5 @@
+-- Fast buffer switching.
+
 return {
     "theprimeagen/harpoon",
     branch = "harpoon2",

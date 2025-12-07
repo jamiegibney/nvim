@@ -1,3 +1,5 @@
+-- Basic syntax parsing and highlighting.
+
 return {
     {
         "nvim-treesitter/nvim-treesitter",

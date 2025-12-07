@@ -1,3 +1,6 @@
+-- Key remaps.
+-- NOTE that some key remaps are in plugin files, which allows the lazy loading to use those keymaps as loading triggers.
+
 vim.g.mapleader = " "
 
 local function map(mode, keys, func)

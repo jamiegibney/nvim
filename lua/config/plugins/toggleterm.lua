@@ -1,3 +1,5 @@
+-- In-editor terminal which is easily shown/hidden.
+
 return {
     "akinsho/toggleterm.nvim",
     version = "*",

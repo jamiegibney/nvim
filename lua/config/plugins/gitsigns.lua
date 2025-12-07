@@ -1,3 +1,5 @@
+-- Sign-column stuff to show git state.
+
 return {
     "lewis6991/gitsigns.nvim",
     event = "BufWrite",

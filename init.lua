@@ -29,7 +29,7 @@ bootstrap("folke", "lazy")
 
 local function before_fn()
     vim.loader.enable()
-    require("config.autocmds")
+    require("config.auto_commands")
     require("config.options")
     require("config.mappings")
 end
