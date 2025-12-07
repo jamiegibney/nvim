@@ -35,7 +35,8 @@ local function before_fn()
 end
 
 local function after_fn()
-    require("config.themes.dark")
+    -- require("config.themes.dark")
+    require("config.themes.light")
 
     vim.diagnostic.config({
         virtual_text = {
@@ -57,7 +58,7 @@ end
 require("lazier").setup("config.plugins", {
     lazier = {
         before = before_fn,
-        after = after_fn
+        after  = after_fn
     },
     defaults = {
         lazy = false,
