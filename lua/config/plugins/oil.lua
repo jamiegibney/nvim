@@ -23,6 +23,7 @@ return require("lazier") {
                 ["<C-h>"] = false,
                 ["<C-p>"] = false,
                 ["<C-l>"] = false,
+                ["<C-c>"] = false,
             },
             view_options = {
                 show_hidden = true,
@@ -34,6 +35,12 @@ return require("lazier") {
             win_options = {
                 signcolumn = "yes",
                 numberwidth = 6,
+            },
+            confirmation = {
+                border = "rounded",
+            },
+            progress = {
+                border = "rounded",
             },
             -- git = {
             --     add = function(_) return true end,

@@ -1,11 +1,11 @@
 return require("lazier") {
     "akinsho/toggleterm.nvim",
     version = "*",
-    lazy = false,
+    keys = { "<C-Space>", },
 
     config = function()
         require("toggleterm").setup({
-            size = 70,
+            size = 60,
             winbar = { enabled = false, },
 
             hide_numbers = true,

@@ -1,7 +1,3 @@
-local function echo(message, hl)
-    vim.api.nvim_echo({{ message, hl or "Normal" }}, true, {})
-end
-
 local function bootstrap(author, name, opts)
     opts = opts or {}
     local path = opts.dir or (vim.fn.stdpath("data") .. "/" .. name .. "/" .. name .. ".nvim")
@@ -18,8 +14,8 @@ local function bootstrap(author, name, opts)
         })
 
         if vim.v.shell_error ~= 0 then
-            echo("Failed to clone " .. name .. ":", "Error")
-            echo(out)
+            print("Failed to clone " .. name .. ":", "Error")
+            print(out)
             vim.fn.getchar()
             os.exit(1)
         end
@@ -31,17 +27,37 @@ end
 bootstrap("jake-stewart", "lazier")
 bootstrap("folke", "lazy")
 
+local function before_fn()
+    vim.loader.enable()
+    require("config.autocmds")
+    require("config.options")
+    require("config.mappings")
+end
+
+local function after_fn()
+    require("config.themes.dark")
+
+    vim.diagnostic.config({
+        virtual_text = {
+            spacing = 4,
+            prefix = "⏺",
+        },
+        signs = false,
+        update_in_insert = false,
+        underline = true,
+        severity_sort = true,
+    })
+
+    vim.diagnostic.enable(false)
+
+    vim.lsp.enable({ "clangd" })
+    vim.lsp.enable({ "lua_ls" })
+end
+
 require("lazier").setup("config.plugins", {
     lazier = {
-        before = function()
-            vim.loader.enable()
-            require("config.options")
-            require("config.mappings")
-            require("config.autocmds")
-        end,
-        after = function()
-            require("config.themes.dark")
-        end,
+        before = before_fn,
+        after = after_fn
     },
     defaults = {
         lazy = false,

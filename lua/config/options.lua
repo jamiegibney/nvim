@@ -12,14 +12,14 @@ opt.history = 500
 opt.ttimeoutlen = 1
 opt.updatetime = 50
 
-opt.splitright = true
-opt.splitbelow = true
+-- opt.splitright = true
+-- opt.splitbelow = true
 
-opt.laststatus = 3
+opt.laststatus = 2
 
 -- TODO
-opt.autoindent  = true
-opt.smartindent = true
+opt.autoindent  = false
+opt.smartindent = false
 
 opt.shiftwidth  = 4
 opt.tabstop     = 4

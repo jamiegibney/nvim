@@ -1,7 +1,7 @@
 return require("lazier") {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    event = "BufEnter",
+    lazy = false,
 
     config = function()
         require("ibl").setup({

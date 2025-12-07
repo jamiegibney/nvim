@@ -1,6 +1,6 @@
 return require("lazier") {
     "lewis6991/gitsigns.nvim",
-    event = "BufRead",
+    event = "BufWrite",
 
     config = function()
         require("gitsigns").setup({})

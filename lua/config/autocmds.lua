@@ -23,9 +23,10 @@ end)
 autocmd({ "BufWinEnter" }, function() vim.cmd("exe 'normal zz'") end)
 
 -- set comment highlights
-autocmd({ "BufRead", "BufWrite" }, function()
+autocmd({ "TextChanged", "BufReadPost", "BufWritePost" }, function()
     vim.api.nvim_set_hl(0, "@ibl.indent.char.1", { fg = "#2a2a2a" })
     vim.api.nvim_set_hl(0, "@ibl.scope.char.1", { fg = "#444444" })
+    vim.fn.matchadd("TODOComment", [[\<TODO\>]])
     vim.fn.matchadd("NOTEComment", [[\<NOTE\>]])
     vim.fn.matchadd("MARKComment", [[\<MARK\>]])
     vim.fn.matchadd("IMPORTANTComment", [[\<IMPORTANT\>]])
@@ -45,8 +46,8 @@ end, { "*.hpp", "*.cpp", "*.h", "*.c", "*.m", "*.mm", })
 
 -- set terminal background based on theme
 autocmd({ "Colorscheme" }, function()
-    local bg = vim.api.nvim_get_hl(0, { name = "Normal", link = false }).bg
-    io.stdout:write(("\027]11;#%06x\027\\"):format(bg))
+    -- local bg = vim.api.nvim_get_hl(0, { name = "Normal", link = false }).bg
+    -- io.stdout:write(("\027]11;#%06x\027\\"):format(bg))
 end)
 autocmd({ "VimLeave" }, function()
     io.stdout:write("\027]111;;\027\\")
@@ -57,7 +58,7 @@ vim.api.nvim_create_user_command("LightTheme", function()
 end, {})
 
 vim.api.nvim_create_user_command("DarkTheme", function()
-    require("config.theme.dark").set_dark_theme()
+    require("config.themes.dark").set_dark_theme()
 end, {})
 
 local function set_statusline()
@@ -71,7 +72,7 @@ local function set_statusline()
     local set_color_3 = "%#StatusLineNC#"
 
     local file_dir = "/%f"
-    local file_name = " %t"
+    -- local file_name = " %t"
     local modified_read_only = "%m%r"
     local align_right = "%="
 

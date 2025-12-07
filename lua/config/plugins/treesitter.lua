@@ -2,7 +2,7 @@ return require("lazier") {
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        event = "VeryLazy",
+        event = "BufWrite",
 
         config = function()
             require("nvim-treesitter.configs").setup({
@@ -22,7 +22,11 @@ return require("lazier") {
                 auto_install = true,
 
                 highlight = {
-                    enable = true,
+                    enable = {},
+                    disable = {
+                        "c", "cpp",
+                    },
+
                     additional_vim_regex_highlighting = true,
                 },
             })
@@ -30,7 +34,7 @@ return require("lazier") {
     },
     {
         "nvim-treesitter/nvim-treesitter-context",
-        event = "VeryLazy",
+        event = "BufWrite",
         config = function()
             require("treesitter-context").setup({
                 max_lines = 5,

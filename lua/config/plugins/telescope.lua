@@ -2,11 +2,16 @@ return require("lazier") {
     "nvim-telescope/telescope.nvim",
 
     dependencies = {
-        { "nvim-lua/plenary.nvim", },
+        {
+            "nvim-lua/plenary.nvim",
+        },
         {
             "nvim-telescope/telescope-fzf-native.nvim",
             build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release --target install",
-        }
+        },
+        {
+            "nvim-telescope/telescope-ui-select.nvim",
+        },
     },
 
     keys = {
@@ -78,10 +83,13 @@ return require("lazier") {
                     horizontal = {
                         width  = 0.80,
                         height = 0.90,
-                        preview_width = 0.35,
+                        preview_width = 0.45,
                         prompt_position = "bottom",
                     },
                     vertical = {
+                        width  = 0.80,
+                        height = 0.90,
+                        preview_height = 0.60,
                         mirror = false,
                         prompt_position = "bottom",
                     },
@@ -94,7 +102,7 @@ return require("lazier") {
 
                 winblend = 0,
                 color_devicons = true,
-                borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+                -- borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
                 file_ignore_patterns = { "node_modules" },
                 set_env = { ["COLORTERM"] = "truecolor" },
             },
@@ -103,8 +111,14 @@ return require("lazier") {
                     previewer = false,
                     hidden = false,
                 },
+                lsp_references = {
+                    layout_strategy = "vertical",
+                },
                 oldfiles = {
                     previewer = false,
+                },
+                live_grep = {
+                    layout_strategy = "vertical",
                 },
                 spell_suggest = {
                     layout_strategy = "cursor",
@@ -113,5 +127,12 @@ return require("lazier") {
         })
 
         require("telescope").load_extension("fzf")
+        require("telescope").load_extension("ui-select")
+
+        vim.keymap.set("n", "<leader>se", function()
+            require("telescope.builtin").diagnostics({
+                severity = vim.diagnostic.severity.ERROR
+            })
+        end)
     end,
 }

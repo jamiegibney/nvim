@@ -4,6 +4,8 @@ local function map(mode, keys, func)
     vim.keymap.set(mode, keys, func)
 end
 
+-- MARK: normal mode mappings
+
 -- centre the buffer on bit motions
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
@@ -18,6 +20,7 @@ map("n", "<leader>/", ":norm gcc<CR>")
 
 -- f[ile] s[ystem]
 map("n", "<leader>fs", ":Oil<CR>")
+-- map("n", "<leader>fs", ":Fyler<CR>")
 -- p[revious] f[ile]
 map("n", "<leader>pf", "<C-^>")
 
@@ -32,9 +35,9 @@ map("n", "<C-CR>", "A;<Esc>")
 map("n", "<leader>%", "<cmd>%y<CR>")
 
 -- s[plit] v[ertical]
-map("n", "<leader>sv", "<C-w>v<C-w>j")
+map("n", "<leader>sv", "<C-w>v<C-w>l")
 -- s[plit] h[orizontal]
-map("n", "<leader>sh", "<C-w>s<C-w>l")
+map("n", "<leader>sh", "<C-w>s<C-w>j")
 
 -- nicer split resizing
 map("n", "<C-->", "4<C-w>-")
@@ -60,6 +63,17 @@ map("n", "<leader>oh", "<cmd>!open .<CR>")
 -- h[ex]d[ump]
 map("n", "<leader>hd", "<cmd>%!xxd -b -d -c 8<CR>")
 
+-- sp[elling]
+map("n", "<leader>sp", function()
+    vim.cmd("set spell!")
+
+    if vim.opt.spell:get() then
+        print("Spell-checking enabled");
+    else
+        print("Spell-checking disabled");
+    end
+end)
+
 -- unmap Ctrl-C in insert
 map("i", "<C-c>", "")
 -- append semicolon and switch to normal mode
@@ -84,6 +98,77 @@ map("c", "<C-e>", "<End>")
 
 -- retain contents of register after pasting into a selection
 map("x", "<leader>p", [["_dP]])
+
+-- MARK: LSP
+
+-- c[ode] a[ction]
+map("n", "<leader>ca", function()
+    vim.lsp.buf.code_action()
+end)
+
+-- i[nformation]
+map("n", "<leader>i", function()
+    vim.lsp.buf.hover()
+end)
+
+-- r[e]n[ame]
+map("n", "<leader>rn", function()
+    vim.lsp.buf.rename()
+end)
+
+-- f[or]m[at]
+map("v", "<leader>fm", function()
+    vim.lsp.buf.format({
+        async = true,
+        range = {
+            ["start"] = vim.api.nvim_buf_get_mark(0, "<"),
+            ["end"]   = vim.api.nvim_buf_get_mark(0, ">"),
+        },
+    })
+end)
+
+-- g[oto] d[efinition]
+map("n", "gd", function()
+    vim.lsp.buf.definition()
+end)
+
+-- h[elp]
+map("i", "<C-h>", function()
+    vim.lsp.buf.signature_help()
+end)
+
+-- d[iag]n[ostics]
+map("n", "<leader>dn", function()
+    vim.diagnostic.open_float({
+        source = true,
+    })
+end)
+
+-- previous diagnostic
+map("n", "<C-[>", function()
+    vim.diagnostic.jump({
+        count = -1,
+        on_jump = function(_)
+            vim.diagnostic.open_float({
+                source = true
+            })
+        end
+    })
+end)
+
+-- next diagnostic
+map("n", "<C-]>", function()
+    vim.diagnostic.jump({
+        count = 1,
+        on_jump = function(_)
+            vim.diagnostic.open_float({
+                source = true
+            })
+        end
+    })
+end)
+
+-- MARK: some more complex mappings
 
 -- t[oggle] d[iagnostics]
 map("n", "<leader>td", function()
@@ -129,4 +214,3 @@ map("n", "<leader>gi", function()
 
     vim.cmd("edit .gitignore")
 end)
-

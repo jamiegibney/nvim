@@ -5,7 +5,7 @@ return require("lazier") {
         "nvim-lua/plenary.nvim",
     },
 
-    event = "VeryLazy",
+    -- event = "VeryLazy",
 
     config = function()
         local hp = require("harpoon")
@@ -18,7 +18,10 @@ return require("lazier") {
         -- h[arpoon]
         vim.keymap.set("n", "<C-h>", function()
             hp.ui:toggle_quick_menu(hp:list(), {
-                title = " Harpoon ",
+                title = "",
+                border = "rounded",
+                ui_width_ratio = 0.4,
+                height_in_lines = 12,
             })
         end)
 
