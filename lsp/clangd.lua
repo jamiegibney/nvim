@@ -65,6 +65,9 @@ end
 return {
     cmd = {
         "/Users/jamiegibney/Documents/dev/probe/clangd/clangd_snapshot_20251130/bin/clangd",
+        -- NOTE: playing around with nightly clangd for some nicer documentation features.
+        -- Usually this would be:
+        -- "/Library/Developer/CommandLineTools/usr/bin/clangd",
         "--background-index",
         "--clang-tidy",
         "--cross-file-rename",
