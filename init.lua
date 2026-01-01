@@ -35,8 +35,9 @@ local function before_fn()
 end
 
 local function after_fn()
-    -- require("config.themes.dark")
-    require("config.themes.light")
+    -- local theme = require("config.themes.dark")
+    local theme = require("config.themes.light")
+    theme.set_theme()
 
     vim.diagnostic.config({
         virtual_text = {
@@ -51,8 +52,9 @@ local function after_fn()
 
     vim.diagnostic.enable(false)
 
-    vim.lsp.enable({ "clangd" })
-    vim.lsp.enable({ "lua_ls" })
+    vim.lsp.enable("clangd")
+    vim.lsp.enable("lua_ls")
+    vim.lsp.enable("ols")
 end
 
 require("lazier").setup("config.plugins", {
