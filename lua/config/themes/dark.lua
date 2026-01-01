@@ -9,21 +9,16 @@ end
 
 M = {}
 
-function M.set_dark_theme()
+function M.set_theme()
     vim.cmd.colorscheme "quiet"
     vim.opt.background = "dark"
 
-    set_hl("TODOComment", { fg = "#459cff", bg = "#052c3f", italic = true, bold = true })
-    set_hl("NOTEComment", { fg = "#d9aa0d", bg = "#2f2803", italic = true, bold = true })
-    set_hl("IMPORTANTComment", { fg = "#d95716", bg = "#371c1c", italic = true, bold = true })
-    set_hl("MARKComment", { fg = "#61cf34", bg = "#072f02", italic = true, bold = true, underline = true })
-    set_hl("NocheckinComment", { fg = "#bb61e8", bg = "#392552", italic = true, bold = true })
-
-    vim.fn.matchadd("TODOComment", [[\<TODO\>]])
-    vim.fn.matchadd("NOTEComment", [[\<NOTE\>]])
-    vim.fn.matchadd("MARKComment", [[\<MARK\>]])
-    vim.fn.matchadd("IMPORTANTComment", [[\<IMPORTANT\>]])
-    vim.fn.matchadd("NocheckinComment", [[nocheckin]])
+    set_hl("BlueComment",   { fg = "#008dde", bg = "#163345", italic = true, bold = true })
+    set_hl("YellowComment", { fg = "#d9aa0d", bg = "#2f2803", italic = true, bold = true })
+    set_hl("RedComment",    { fg = "#d95716", bg = "#371c1c", italic = true, bold = true })
+    set_hl("PurpleComment", { fg = "#bb61e8", bg = "#392552", italic = true, bold = true })
+    set_hl("GreenComment",  { fg = "#61cf34", bg = "#072f02", italic = true, bold = true })
+    set_hl("GreenUnderlinedComment",  { fg = "#61cf34", bg = "#072f02", italic = true, bold = true, underline = true })
 
     set_hl("cTodo", { fg = "#397fac", bg = "#112f34", italic = true, bold = true })
 
@@ -47,13 +42,14 @@ function M.set_dark_theme()
     set_hl("@lsp.type.enumMember",                 { fg = "#9b7891", italic = true })
 
     set_hl("@constant.macro",                      { fg = "#975d36", })
-    set_hl("cPreCondit",                           { fg = "#975d36", })
+    set_hl("cPreCondit",                           { fg = "#9e9b87", })
     set_hl("@function",                            { fg = fn_color })
     set_hl("@function.call",                       { fg = fn_color })
     set_hl("@function.method.call",                { fg = fn_color })
     set_hl("@keyword.type",                        { fg = keyword_color })
     set_hl("@keyword.repeat",                      { fg = keyword_color })
     set_hl("@keyword.modifier",                    { fg = keyword_color })
+    set_hl("@keyword.conditional",                 { fg = keyword_color })
     set_hl("@type.builtin",                        { fg = keyword_color })
     set_hl("@type",                                { fg = type_color })
     set_hl("@constant",                            { link = "none" })
@@ -108,8 +104,8 @@ function M.set_dark_theme()
 
     local bg = vim.api.nvim_get_hl(0, { name = "Normal", link = false }).bg
     io.stdout:write(("\027]11;#%06x\027\\"):format(bg))
-end
 
-M.set_dark_theme()
+    print("Set dark theme")
+end
 
 return M
