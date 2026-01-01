@@ -24,13 +24,39 @@ end)
 -- centre buffer when opening
 autocmd({ "BufWinEnter" }, function() vim.cmd("exe 'normal zz'") end)
 
+-- useful abbreviations
+autocmd({ "BufWinEnter" }, function()
+    -- Inserts the date, e.g. '8 Dec 25'
+    vim.cmd("iabbrev datenow <BS><C-r>=strftime('%e %b %y')<CR>")
+
+    -- Inserts a header as a C comment, e.g.
+    -- /* 
+    --  * (C) Copyright 2025 Jamie Gibney. All rights reserved.
+    --  *
+    --  * File: src/gui/widgets/linear_slider.h
+    --  * Created: 14:16 08 Dec 25
+    --  * Author: Jamie Gibney
+    --  *
+    --  */
+    vim.cmd("iabbrev cheader /* <CR>(C) Copyright <C-r>=strftime('%Y')<CR> Jamie Gibney. All rights reserved.<CR><CR>File: <C-r>%<CR>Created: <C-r>=strftime('%H:%M %d %b %y')<CR><CR>Author: Jamie Gibney<CR><CR>/")
+end)
+
 -- set comment highlights
-autocmd({ "TextChanged", "BufReadPost", "BufWritePost" }, function()
-    vim.fn.matchadd("TODOComment", [[\<TODO\>]])
-    vim.fn.matchadd("NOTEComment", [[\<NOTE\>]])
-    vim.fn.matchadd("MARKComment", [[\<MARK\>]])
-    vim.fn.matchadd("IMPORTANTComment", [[\<IMPORTANT\>]])
-    vim.fn.matchadd("NocheckinComment", [[\<nocheckin\>]])
+autocmd({ "BufReadPost", "BufWritePost" }, function()
+    vim.fn.matchadd("BlueComment", [[\<TODO\>]])
+    vim.fn.matchadd("YellowComment", [[\<NOTE\>]])
+    vim.fn.matchadd("GreenUnderlinedComment", [[\<MARK\>]])
+    vim.fn.matchadd("RedComment", [[\<IMPORTANT\>]])
+    vim.fn.matchadd("YellowComment", "@[A-z]*")
+    vim.fn.matchadd("BlueComment", [[@todo]])
+    vim.fn.matchadd("PurpleComment", [[@cleanup]])
+    vim.fn.matchadd("PurpleComment", [[@speed]])
+    vim.fn.matchadd("YellowComment", [[@note]])
+    vim.fn.matchadd("GreenUnderlinedComment", [[@mark]])
+    vim.fn.matchadd("RedComment", [[@nocheckin]])
+    vim.fn.matchadd("RedComment", [[@fixme]])
+    vim.fn.matchadd("RedComment", [[@incomplete]])
+    vim.fn.matchadd("RedComment", [[@important]])
 end)
 
 -- flash when yanking text
@@ -54,11 +80,13 @@ autocmd({ "VimLeave" }, function()
 end)
 
 vim.api.nvim_create_user_command("LightTheme", function()
-    require("config.themes.light").set_theme()
+    local theme = require("config.themes.light")
+    theme.set_theme()
 end, {})
 
 vim.api.nvim_create_user_command("DarkTheme", function()
-    require("config.themes.dark").set_dark_theme()
+    local theme = require("config.themes.dark")
+    theme.set_theme()
 end, {})
 
 local function set_statusline()
@@ -119,4 +147,4 @@ local function set_statusline()
     )
 end
 
-autocmd({ "VimEnter", "InsertLeave", "InsertEnter", "BufWrite", "TextChanged", }, set_statusline)
+autocmd({ "VimEnter", "BufWritePost", }, set_statusline)
