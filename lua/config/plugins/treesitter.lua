@@ -24,12 +24,12 @@ return {
                 auto_install = true,
 
                 highlight = {
-                    enable = {},
+                    enable = false,
                     disable = {
                         "c", "cpp",
                     },
 
-                    additional_vim_regex_highlighting = true,
+                    additional_vim_regex_highlighting = false,
                 },
             })
         end,

@@ -10,9 +10,9 @@ return {
             scope = {
                 enabled = false,
             },
-            whitespace = {
-                remove_blankline_trail = false,
-            },
+            -- whitespace = {
+            --     remove_blankline_trail = false,
+            -- },
             indent = {
                 char = "▏",
             },
