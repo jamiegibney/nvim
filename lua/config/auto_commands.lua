@@ -42,7 +42,7 @@ autocmd({ "BufWinEnter" }, function()
 end)
 
 -- set comment highlights
-autocmd({ "BufReadPost", "BufWritePost" }, function()
+autocmd({ "BufWritePost" }, function()
     vim.fn.matchadd("BlueComment", [[\<TODO\>]])
     vim.fn.matchadd("YellowComment", [[\<NOTE\>]])
     vim.fn.matchadd("GreenUnderlinedComment", [[\<MARK\>]])
