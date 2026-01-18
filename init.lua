@@ -52,9 +52,11 @@ local function after_fn()
 
     vim.diagnostic.enable(false)
 
+    vim.lsp.enable("armls")
     vim.lsp.enable("clangd")
     vim.lsp.enable("lua_ls")
     vim.lsp.enable("ols")
+    vim.lsp.enable("qmlls")
 end
 
 require("lazier").setup("config.plugins", {
