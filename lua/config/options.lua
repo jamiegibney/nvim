@@ -16,9 +16,8 @@ opt.updatetime = 7
 
 opt.laststatus = 2
 
--- TODO
-opt.autoindent  = false
-opt.smartindent = false
+opt.autoindent  = true
+opt.smartindent = true
 
 opt.shiftwidth  = 4
 opt.tabstop     = 4
@@ -61,6 +60,7 @@ opt.background = "dark"
 -- required for toggleterm to function correctly
 opt.hidden = true
 
+opt.cinoptions = "(0"
 opt.spelllang = "en_gb"
 
 opt.shada = "!,'200,<50,s10,h"
