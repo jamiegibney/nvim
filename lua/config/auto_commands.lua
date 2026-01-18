@@ -17,6 +17,7 @@ end, "*.sc")
 -- don't open a new comment comment with 'o'
 -- and don't consider '_' as part of a word, but rather a boundary
 autocmd({ "BufEnter" }, function()
+    -- @todo: these should be set globally
     vim.cmd("setlocal formatoptions-=o")
     vim.cmd("setlocal iskeyword-=_")
 end)
@@ -25,7 +26,7 @@ end)
 autocmd({ "BufWinEnter" }, function() vim.cmd("exe 'normal zz'") end)
 
 -- useful abbreviations
-autocmd({ "BufWinEnter" }, function()
+autocmd({ "VimEnter" }, function()
     -- Inserts the date, e.g. '8 Dec 25'
     vim.cmd("iabbrev datenow <BS><C-r>=strftime('%e %b %y')<CR>")
 
@@ -42,7 +43,7 @@ autocmd({ "BufWinEnter" }, function()
 end)
 
 -- set comment highlights
-autocmd({ "BufWritePost" }, function()
+autocmd({ "WinEnter" }, function()
     vim.fn.matchadd("BlueComment", [[\<TODO\>]])
     vim.fn.matchadd("YellowComment", [[\<NOTE\>]])
     vim.fn.matchadd("GreenUnderlinedComment", [[\<MARK\>]])
@@ -70,11 +71,6 @@ autocmd({ "BufWinEnter" }, function()
     vim.cmd("setlocal commentstring=//\\ %s")
 end, { "*.hpp", "*.cpp", "*.h", "*.c", "*.m", "*.mm", })
 
--- set terminal background based on theme
-autocmd({ "Colorscheme" }, function()
-    -- local bg = vim.api.nvim_get_hl(0, { name = "Normal", link = false }).bg
-    -- io.stdout:write(("\027]11;#%06x\027\\"):format(bg))
-end)
 autocmd({ "VimLeave" }, function()
     io.stdout:write("\027]111;;\027\\")
 end)
