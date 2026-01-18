@@ -1,3 +1,5 @@
+local use_light_theme = true
+
 local function bootstrap(author, name, opts)
     opts = opts or {}
     local path = opts.dir or (vim.fn.stdpath("data") .. "/" .. name .. "/" .. name .. ".nvim")
@@ -24,7 +26,6 @@ local function bootstrap(author, name, opts)
     vim.opt.runtimepath:prepend(path)
 end
 
-bootstrap("jake-stewart", "lazier")
 bootstrap("folke", "lazy")
 
 local function before_fn()
@@ -35,9 +36,11 @@ local function before_fn()
 end
 
 local function after_fn()
-    -- local theme = require("config.themes.dark")
-    local theme = require("config.themes.light")
-    theme.set_theme()
+    if (use_light_theme) then
+        require("config.themes.light").set_theme()
+    else
+        require("config.themes.dark").set_theme()
+    end
 
     vim.diagnostic.config({
         virtual_text = {
@@ -59,18 +62,15 @@ local function after_fn()
     vim.lsp.enable("qmlls")
 end
 
-require("lazier").setup("config.plugins", {
-    lazier = {
-        before = before_fn,
-        after  = after_fn
-    },
-    defaults = {
-        lazy = false,
-    },
-    change_detection = {
-        enabled = false,
-    },
-    performance = {
-        cache = { enabled = true },
-    },
-})
+before_fn()
+
+require("lazy").setup(
+    require("config.plugins"),
+    {
+        defaults = {
+            lazy = true,
+        },
+    }
+)
+
+after_fn()
