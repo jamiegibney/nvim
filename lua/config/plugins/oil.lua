@@ -52,6 +52,7 @@ return {
             constrain_cursor = "name",
         })
 
-        require("oil-git-status").setup({})
+        require("oil-git-status").setup({
+        })
     end,
 }

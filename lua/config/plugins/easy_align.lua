@@ -2,9 +2,9 @@
 
 return {
     "junegunn/vim-easy-align",
-    command = ":EasyAlign",
+    lazy = false,
 
     config = function()
-        vim.keymap.set({ "n", "v" }, "<leader>ea", "<Plug>(EasyAlign)")
+       vim.keymap.set({ "n", "v" }, "<leader>ea", "<Plug>(EasyAlign)")
     end
 }

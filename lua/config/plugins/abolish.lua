@@ -2,5 +2,5 @@
 
 return {
     "tpope/vim-abolish",
-    event = "BufWrite",
+    lazy = false,
 }
