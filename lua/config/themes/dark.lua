@@ -13,14 +13,14 @@ function M.set_theme()
     vim.cmd.colorscheme "quiet"
     vim.opt.background = "dark"
 
-    set_hl("BlueComment",   { fg = "#008dde", bg = "#163345", italic = true, bold = true })
-    set_hl("YellowComment", { fg = "#d9aa0d", bg = "#2f2803", italic = true, bold = true })
-    set_hl("RedComment",    { fg = "#d95716", bg = "#371c1c", italic = true, bold = true })
-    set_hl("PurpleComment", { fg = "#bb61e8", bg = "#392552", italic = true, bold = true })
-    set_hl("GreenComment",  { fg = "#61cf34", bg = "#072f02", italic = true, bold = true })
-    set_hl("GreenUnderlinedComment",  { fg = "#61cf34", bg = "#072f02", italic = true, bold = true, underline = true })
+    set_hl("BlueComment",   { fg = "#008dde", bg = "#163345", italic = false, bold = true })
+    set_hl("YellowComment", { fg = "#d9aa0d", bg = "#2f2803", italic = false, bold = true })
+    set_hl("RedComment",    { fg = "#d95716", bg = "#371c1c", italic = false, bold = true })
+    set_hl("PurpleComment", { fg = "#bb61e8", bg = "#392552", italic = false, bold = true })
+    set_hl("GreenComment",  { fg = "#61cf34", bg = "#072f02", italic = false, bold = true })
+    set_hl("GreenUnderlinedComment",  { fg = "#61cf34", bg = "#072f02", italic = false, bold = true, underline = true })
 
-    set_hl("cTodo", { fg = "#397fac", bg = "#112f34", italic = true, bold = true })
+    set_hl("cTodo", { fg = "#397fac", bg = "#112f34", italic = false, bold = true })
 
     local bg_color = "#181818"
 
@@ -87,8 +87,8 @@ function M.set_theme()
     set_hl("Normal",                               { fg = "#eaeaea", bg = bg_color, })
     set_hl("MatchParen",                           { fg = "#111111", bg = "#888888", })
     set_hl("Preproc",                              { fg = "#9e9b87", })
-    set_hl("Comment",                              { italic = true,  fg = "#666666", })
-    set_hl("String",                               { fg = "#5a6753", italic = true })
+    set_hl("Comment",                              { fg = "#666666", })
+    set_hl("String",                               { fg = "#5a6753", })
     set_hl("Braces",                               { fg = "#565959", })
     set_hl("Statusline",                           { bg = "#202020", })
     set_hl("StatuslineNC",                         { bg = "#202020", })
