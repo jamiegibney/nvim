@@ -1,5 +1,3 @@
-local use_light_theme = true
-
 local function bootstrap(author, name, opts)
     opts = opts or {}
     local path = opts.dir or (vim.fn.stdpath("data") .. "/" .. name .. "/" .. name .. ".nvim")
@@ -36,6 +34,16 @@ local function before_fn()
 end
 
 local function after_fn()
+    local rpath = vim.api.nvim_list_runtime_paths()[1]
+    local lock = rpath .. "/lua/config/themes/light_lock"
+    local f, _ = io.open(lock, "r")
+
+    local use_light_theme = false
+    if f ~= nil then
+        use_light_theme = true
+        f:close()
+    end
+
     if (use_light_theme) then
         require("config.themes.light").set_theme()
     else

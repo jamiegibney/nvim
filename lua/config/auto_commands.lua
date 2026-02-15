@@ -37,13 +37,14 @@ autocmd({ "VimEnter" }, function()
     --  * File: src/gui/widgets/linear_slider.h
     --  * Created: 14:16 08 Dec 25
     --  * Author: Jamie Gibney
+    --  */
+    vim.cmd("iabbrev cheader /* <CR>(C) Copyright <C-r>=strftime('%Y')<CR> Jamie Gibney. All rights reserved.<CR><CR>File: <C-r>%<CR>Created: <C-r>=strftime('%H:%M %d %b %y')<CR><CR>Author: Jamie Gibney<CR>/")
     --  *
     --  */
-    vim.cmd("iabbrev cheader /* <CR>(C) Copyright <C-r>=strftime('%Y')<CR> Jamie Gibney. All rights reserved.<CR><CR>File: <C-r>%<CR>Created: <C-r>=strftime('%H:%M %d %b %y')<CR><CR>Author: Jamie Gibney<CR><CR>/")
 end)
 
 -- set comment highlights
-autocmd({ "WinEnter" }, function()
+autocmd({ "VimEnter" }, function()
     vim.fn.matchadd("BlueComment", [[\<TODO\>]])
     vim.fn.matchadd("YellowComment", [[\<NOTE\>]])
     vim.fn.matchadd("GreenUnderlinedComment", [[\<MARK\>]])
@@ -75,14 +76,67 @@ autocmd({ "VimLeave" }, function()
     io.stdout:write("\027]111;;\027\\")
 end)
 
+local function toggle_ghostty_theme(light)
+    local path = vim.fn.expand("$HOME/.config/ghostty/config")
+    local f, _ = assert(io.open(path, "r"))
+
+    local contents = f:read("*all")
+    f:close()
+
+    local len = contents:len()
+
+    local _, j = string.find(contents, "#ENDTHEME\n")
+    assert(j ~= nil)
+    local remaining_config = string.sub(contents, j, len)
+
+    local prefix
+
+    if light then
+        prefix = "#THEME\ntheme = Tomorrow\n#ENDTHEME"
+    else
+        prefix = "#THEME\ntheme = Tomorrow Night Bright\n#ENDTHEME"
+    end
+
+    f = assert(io.open(path, "w"))
+    f:write(prefix .. remaining_config)
+    f:close()
+end
+
+local function set_persistent_light_theme(light)
+    local lock = vim.api.nvim_list_runtime_paths()[1] .. "/lua/config/themes/light_lock"
+    local f, _ = io.open(lock, "r")
+
+    if light and f == nil then
+        f = assert(io.open(lock, "w+"))
+        f:write("lock")
+        f:flush()
+        f:close()
+    elseif not light and f ~= nil then
+        os.remove(lock)
+        f:close()
+    end
+
+    local unix = false
+
+    local fh, _ = assert(io.popen("uname -o 2>/dev/null", "r"))
+    if fh then
+        unix = true
+        fh:close()
+    end
+
+    if unix then
+        toggle_ghostty_theme(light)
+    end
+end
+
 vim.api.nvim_create_user_command("LightTheme", function()
-    local theme = require("config.themes.light")
-    theme.set_theme()
+    set_persistent_light_theme(true)
+    require("config.themes.light").set_theme()
 end, {})
 
 vim.api.nvim_create_user_command("DarkTheme", function()
-    local theme = require("config.themes.dark")
-    theme.set_theme()
+    set_persistent_light_theme(false)
+    require("config.themes.dark").set_theme()
 end, {})
 
 local function set_statusline()
