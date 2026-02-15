@@ -44,7 +44,7 @@ autocmd({ "VimEnter" }, function()
 end)
 
 -- set comment highlights
-autocmd({ "VimEnter" }, function()
+autocmd({ "WinEnter" }, function()
     vim.fn.matchadd("BlueComment", [[\<TODO\>]])
     vim.fn.matchadd("YellowComment", [[\<NOTE\>]])
     vim.fn.matchadd("GreenUnderlinedComment", [[\<MARK\>]])
