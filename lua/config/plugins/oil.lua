@@ -26,6 +26,33 @@ return {
                 ["<C-p>"] = false,
                 ["<C-l>"] = false,
                 ["<C-c>"] = false,
+
+                ["<leader>yp"] = { -- y[ank] p[ath]
+                    desc = "Copy the current entry's file path to the system clipboard",
+                    callback = function()
+                        require("oil.actions").yank_entry.callback()
+                        print("Copied \"" .. vim.fn.getreg(vim.v.register) .. "\" to the clipboard")
+                    end,
+                },
+                ["<leader>yd"] = { -- y[ank] d[irectory]
+                    desc = "Copy the current entry's parent directory path to the system clipboard",
+                    callback = function()
+                        local path = require("oil").get_current_dir()
+                        vim.fn.setreg("+", path)
+                        print("Copied \"" .. path .. "\" to the clipboard")
+                    end,
+                },
+                ["<leader>yf"] = { -- y[ank] f[ilename]
+                    desc = "Copy the current entry's file name to the system clipboard",
+                    callback = function()
+                        local entry = require("oil").get_cursor_entry()
+                        vim.fn.setreg("+", entry.name)
+                        print("Copied \"" .. entry.name .. "\" to the clipboard")
+                    end,
+                },
+                -- ["<leader>oh"] = { -- o[pen] h[ere]
+                --     desc = ""
+                -- },
             },
             view_options = {
                 show_hidden = true,
