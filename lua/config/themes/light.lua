@@ -46,6 +46,14 @@ local function set_glsl_highlights()
     api.nvim_set_hl(0, "@variable.builtin.glsl", { link = "Special", })
     api.nvim_set_hl(0, "@function.call.glsl", { fg = "#00ab9c", })
     api.nvim_set_hl(0, "@function.glsl", { fg = "#0070a0", bold = true })
+
+    -- api.nvim_set_hl(0, "glslFunction", { fg = "#0070a0", })
+    api.nvim_set_hl(0, "glslBuiltinFunction", { fg = "#00ab9c", })
+    api.nvim_set_hl(0, "glslQualifier", { link = "Statement", })
+    api.nvim_set_hl(0, "glslType", { link = "Statement", })
+    api.nvim_set_hl(0, "glslSwizzle", { link = "@lsp.type.property", })
+    api.nvim_set_hl(0, "glslFloat", { link = "Number", })
+    api.nvim_set_hl(0, "glslFloat", { link = "Number", })
 end
 
 -- * -- C highlight -- * --
