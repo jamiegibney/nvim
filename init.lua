@@ -57,6 +57,7 @@ local function after_fn()
 
     vim.lsp.enable("armls")
     vim.lsp.enable("clangd")
+    vim.lsp.enable("cmake_ls")
     vim.lsp.enable("lua_ls")
     vim.lsp.enable("ols")
     vim.lsp.enable("qmlls")
