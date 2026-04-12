@@ -40,9 +40,9 @@ return {
         sources = {
             default = { "lsp", "buffer", "path", "omni" },
             per_filetype = {
-                md  = { "buffer", "path" },
-                txt = { "buffer", "path" },
-                dap = {},
+                ["md"]  = { "buffer", "path" },
+                ["txt"] = { "buffer", "path" },
+                ["dap-repl"] = {},
             },
         },
         fuzzy = {
