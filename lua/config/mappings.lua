@@ -27,6 +27,9 @@ map("n", "<leader>fs", ":Oil<CR>")
 -- p[revious] f[ile]
 map("n", "<leader>pf", "<C-^>")
 
+map("n", "<leader>dt", ":diffthis<CR>")
+map("n", "<leader>do", ":diffoff<CR>")
+
 -- move current line up and down
 map("n", "<C-p>", "V:move '<-2<CR>gv=gv<Esc>")
 map("n", "<C-n>", "V:move '>+1<CR>gv=gv<Esc>")
