@@ -51,7 +51,7 @@ opt.fillchars = { eob = " " }
 opt.cursorline = true
 
 opt.undofile = true
-opt.undodir = os.getenv("HOME") .. "/.nvim/undodir/"
+
 opt.swapfile = false
 
 opt.shortmess = "OTxtIsonF"
@@ -64,3 +64,9 @@ opt.hidden = true
 opt.spelllang = "en_gb"
 
 opt.shada = "!,'200,<50,s10,h"
+
+local home = os.getenv("HOME")
+if home then
+    opt.undodir = home .. "/.nvim/undodir/"
+end
+
