@@ -9,6 +9,7 @@ return {
     require("config.plugins.gitsigns"),
     require("config.plugins.harpoon"),
     require("config.plugins.ibl"),
+    require("config.plugins.markdown_preview"),
     require("config.plugins.oil"),
     require("config.plugins.surround"),
     require("config.plugins.telescope"),
