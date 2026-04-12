@@ -22,8 +22,8 @@ function M.set_theme()
 
     set_hl("cTodo", { fg = "#397fac", bg = "#112f34", italic = false, bold = true })
 
-    local bg_color = "#181818"
-    -- local bg_color = "#000000"
+    -- local bg_color = "#181818"
+    local bg_color = "#101010"
 
     local fn_color = "#607781"
     local type_color = "#767676"
