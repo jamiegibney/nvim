@@ -2,12 +2,7 @@
 
 return {
     cmd = {
-        "/Users/jamiegibney/Documents/dev/probe/clangd/clangd_snapshot_20251130/bin/clangd",
-        -- NOTE: playing around with nightly clangd for some nicer
-        -- documentation features. Specifically, clangd 22 can format comments
-        -- as Markdown in LSP-hover documentation, which I much prefer.
-        -- Otherwise this would be:
-        -- "/Library/Developer/CommandLineTools/usr/bin/clangd",
+        "clangd",
         "--background-index",
         "--clang-tidy",
         "--cross-file-rename",
