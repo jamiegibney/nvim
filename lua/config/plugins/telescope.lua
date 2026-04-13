@@ -7,10 +7,10 @@ return {
         {
             "nvim-lua/plenary.nvim",
         },
-        {
-            "nvim-telescope/telescope-fzf-native.nvim",
-            build = "make",
-        },
+        -- {
+        --     "nvim-telescope/telescope-fzf-native.nvim",
+        --     build = "make",
+        -- },
         {
             "nvim-telescope/telescope-ui-select.nvim",
         },
@@ -41,10 +41,10 @@ return {
 
         require("telescope").setup({
             extensions = {
-                fzf = {
-                    override_generic_sorter = true,
-                    override_file_sorter = true,
-                },
+                -- fzf = {
+                --     override_generic_sorter = true,
+                --     override_file_sorter = true,
+                -- },
                 history = {
                     limit = 500,
                 },
@@ -120,6 +120,7 @@ return {
                     previewer = false,
                 },
                 live_grep = {
+                    find_command = "rg",
                     layout_strategy = "vertical",
                 },
                 spell_suggest = {
@@ -128,7 +129,7 @@ return {
             },
         })
 
-        require("telescope").load_extension("fzf")
+        -- require("telescope").load_extension("fzf")
         require("telescope").load_extension("ui-select")
 
         vim.keymap.set("n", "<leader>se", function()

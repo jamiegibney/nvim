@@ -2,7 +2,7 @@
 
 return {
     cmd = {
-        "clangd",
+        "C:/Qt/Tools/QtCreator/bin/clang/bin/clangd.exe",
         "--background-index",
         "--clang-tidy",
         "--cross-file-rename",
