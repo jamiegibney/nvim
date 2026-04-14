@@ -124,8 +124,9 @@ local function set_persistent_light_theme(light)
         fh:close()
     end
 
+    -- @todo: this doesn't always seem to work correctly
     if unix then
-        toggle_ghostty_theme(light)
+        -- toggle_ghostty_theme(light)
     end
 end
 
