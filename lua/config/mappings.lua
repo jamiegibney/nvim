@@ -69,6 +69,23 @@ map("n", "<leader>oh", "<cmd>!open .<CR>")
 -- h[ex]d[ump]
 map("n", "<leader>hd", "<cmd>%!xxd -b -d -c 8<CR>")
 
+local function n_toggle_terminal(forward)
+  if forward then
+    vim.cmd("wincmd w")
+  else
+    vim.cmd("wincmd W")
+  end
+
+  if vim.bo.buftype == "terminal" then
+    vim.cmd("norm i")
+  end
+end
+
+map("n", "<M-NL>",  function() n_toggle_terminal(true) end)
+map("n", "<C-M-K>", function() n_toggle_terminal(false) end)
+map("t", "<M-NL>",  "<C-\\><C-n><C-w><C-w>")
+map("t", "<C-M-K>", "<C-\\><C-n><C-w>W")
+
 -- sp[elling]
 map("n", "<leader>sp", function()
     vim.cmd("set spell!")
