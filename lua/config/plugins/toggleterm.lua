@@ -22,7 +22,7 @@ return {
             auto_scroll = false,
 
             open_mapping = "<C-Space>",
-            shell = "fish",
+            shell = "cmd",
         })
     end
 }
