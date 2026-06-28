@@ -22,14 +22,18 @@ function M.set_theme()
 
     set_hl("cTodo", { fg = "#397fac", bg = "#112f34", italic = false, bold = true })
 
-    -- local bg_color = "#181818"
-    local bg_color = "#101010"
-
+    local fg_color = "#feedd9"
+    local bg_color = "#000000"
     local fn_color = "#607781"
-    local type_color = "#767676"
+    -- local type_color = "#767676"
+    local type_color = "#857a70"
     local keyword_color = "#586c8e"
+    local macro_color = "#955f3a"
+    local preconditional_color = "#a39e87"
+    local constant_color = "#b1788d"
+    local string_color = "#54664d"
 
-    set_hl("@lsp.type.macro",                      { fg = "#975d36", })
+    set_hl("@lsp.type.macro",                      { fg = macro_color, })
     set_hl("@lsp.type.function",                   { fg = fn_color })
     set_hl("@lsp.typemod.function",                { fg = fn_color })
     set_hl("@lsp.typemod.method",                  { fg = fn_color })
@@ -39,11 +43,11 @@ function M.set_theme()
     set_hl("@lsp.type.class",                      { fg = type_color })
     set_hl("@lsp.type.enum",                       { fg = type_color })
     set_hl("@lsp.type.struct",                     { fg = type_color })
-    set_hl("@lsp.typemod.variable.readonly",       { fg = "#9b7891" })
-    set_hl("@lsp.type.enumMember",                 { fg = "#9b7891", italic = true })
+    set_hl("@lsp.typemod.variable.readonly",       { fg = constant_color })
+    set_hl("@lsp.type.enumMember",                 { fg = constant_color, italic = true })
 
-    set_hl("@constant.macro",                      { fg = "#975d36", })
-    set_hl("cPreCondit",                           { fg = "#9e9b87", })
+    set_hl("@constant.macro",                      { fg = macro_color, })
+    set_hl("cPreCondit",                           { fg = preconditional_color, })
     set_hl("@function",                            { fg = fn_color })
     set_hl("@function.call",                       { fg = fn_color })
     set_hl("@function.method.call",                { fg = fn_color })
@@ -83,19 +87,22 @@ function M.set_theme()
     set_hl("@punctuation.special.bash",            { fg = "#555555" })
     set_hl("@tag.xml",                             { fg = keyword_color })
     set_hl("@tag.delimiter.xml",                   { fg = "#555555" })
-    set_hl("Statement",                            { fg = "#eaeaea" })
-    set_hl("Identifier",                           { fg = "#eaeaea" })
-    set_hl("Normal",                               { fg = "#eaeaea", bg = bg_color, })
+    set_hl("Statement",                            { fg = fg_color })
+    set_hl("Identifier",                           { fg = fg_color })
+    set_hl("Normal",                               { fg = fg_color })
+    set_hl("Constant",                             { fg = fg_color })
+    set_hl("Special",                              { fg = fg_color })
+    set_hl("Directory",                            { fg = fg_color })
     set_hl("MatchParen",                           { fg = "#111111", bg = "#888888", })
-    set_hl("Preproc",                              { fg = "#9e9b87", })
-    set_hl("Comment",                              { fg = "#666666", })
-    set_hl("String",                               { fg = "#5a6753", })
-    set_hl("Braces",                               { fg = "#565959", })
+    set_hl("Preproc",                              { fg = preconditional_color, })
+    set_hl("Comment",                              { fg = "#766d66", })
+    set_hl("String",                               { fg = string_color, })
+    set_hl("Braces",                               { fg = "#6a6159", })
     set_hl("Statusline",                           { bg = "#202020", })
     set_hl("StatuslineNC",                         { bg = "#202020", })
     set_hl("VertSplit",                            { bg = "none", })
     set_hl("FloatNormal",                          { bg = "#202020", })
-    set_hl("FloatBorder",                          { fg = "#bababa", bg = "#202020", })
+    set_hl("FloatBorder",                          { fg = "#bababa", bg = "#000000", })
     set_hl("PMenu",                                { fg = "none",    bg = "#202020", })
     set_hl("DapUIModifiedValue",                   { link = "DiagnosticWarn" })
     -- api.nvim_set_hl(0, "DiagnosticHint", { fg = "#6a959f", })
@@ -103,10 +110,12 @@ function M.set_theme()
     set_hl("@ibl.indent.char.1", { fg = "#2a2a2a" })
     set_hl("@ibl.scope.char.1", { fg = "#444444" })
 
-    local bg = vim.api.nvim_get_hl(0, { name = "Normal", link = false }).bg
-    io.stdout:write(("\027]11;#%06x\027\\"):format(bg))
+    -- local bg = vim.api.nvim_get_hl(0, { name = "Normal", link = false }).bg
+    io.stdout:write("\027]11;0\027\\")
 
     print("Set dark theme")
 end
+
+-- M.set_theme()
 
 return M
