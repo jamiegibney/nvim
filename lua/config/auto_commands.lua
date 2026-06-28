@@ -20,6 +20,7 @@ autocmd({ "BufEnter" }, function()
     -- @todo: these should be set globally
     vim.cmd("setlocal formatoptions-=o")
     vim.cmd("setlocal iskeyword-=_")
+    vim.cmd("setlocal cino+=(0")
 end)
 
 -- centre buffer when opening
