@@ -36,7 +36,7 @@ opt.smartcase = true
 
 opt.number = true
 opt.relativenumber = true
-opt.numberwidth = 6
+opt.numberwidth = 5
 vim.wo.signcolumn = "yes"
 
 opt.scrolloff = 12
