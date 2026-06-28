@@ -31,8 +31,8 @@ map("n", "<leader>dt", ":diffthis<CR>")
 map("n", "<leader>do", ":diffoff<CR>")
 
 -- move current line up and down
-map("n", "<C-p>", "V:move '<-2<CR>gv=gv<Esc>")
-map("n", "<C-n>", "V:move '>+1<CR>gv=gv<Esc>")
+map("n", "<C-p>", ":move -2<CR>")
+map("n", "<C-n>", ":move +1<CR>")
 
 -- insert semicolon at the end of the current line
 map("n", "<C-CR>", "A;<Esc>")
@@ -91,8 +91,8 @@ map("i", "<C-o>", "<Esc>O")
 -- map({ "i", "v", "c", "s" }, "<Esc>", "<Esc>")
 
 -- move selected block and auto-indent
-map("v", "<C-p>", ":move '<-2<CR>gv=gv")
-map("v", "<C-n>", ":move '>+1<CR>gv=gv")
+map("v", "<C-p>", ":move '<-2<CR>gv")
+map("v", "<C-n>", ":move '>+1<CR>gv")
 
 -- linewise comment
 map("v", "<leader>/", "<Esc>:norm gvgc<CR>")
